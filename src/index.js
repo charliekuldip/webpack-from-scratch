@@ -1,6 +1,6 @@
 require('./styles.scss');
 
-document.write("<h1>hello BILLLY!<br>S.S.S.S.D.S. Pecan!</h1>");
+document.write("<h1>hello BILLLY!<br>S.S.Seeee.S.D.S. Pecan!</h1>");
 
 const dress = () => {
     document.write("<h1>MEMPHIS 3000!</h1>");
