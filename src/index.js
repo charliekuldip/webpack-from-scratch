@@ -1,5 +1,3 @@
-require('./styles.scss');
-
 document.write("<h1>hello BILLLY!<br>S.S. Pecan!</h1>");
 
 const dress = () => {
