@@ -1,4 +1,4 @@
-require('./styles.scss');
+require('./assets/stylesheets/styles.scss');
 
 document.write("<h1>hello BILLLY!<br>S.S.Seeee.S.D.S. Pecan!</h1>");
 

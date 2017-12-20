@@ -19,10 +19,10 @@ let config = {
             },
             {
                 test: /\.scss$/, // files ending with .scss
-                use: ExtractTextWebpackPlugin.extract({ // call our plugin with exract method
-                    use: ['css-loader', 'sass-loader'],
+                use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({ // call our plugin with exract method
+                    use: ['css-loader', 'sass-loader', 'postcss-loader'],
                     fallback: 'style-loader'
-                }) // end extract
+                })) // end extract
             }
         ] // end rules
     },
