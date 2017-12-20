@@ -1,7 +1,8 @@
-$var: red;
-$text: white;
+$var: #001F3F;
+$text: rgb(240, 18, 190);
 
 body {
+    font-family: -apple-system, 'avenir next', avenir, roboto, noto, ubuntu, 'helvetica neue', helvetica, arial, sans-serif;
     background-color: $var;
     color: $text;
 }

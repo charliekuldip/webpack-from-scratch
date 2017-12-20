@@ -74,6 +74,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+__webpack_require__(1);
+
 document.write("<h1>hello BILLLY!<br>S.S. Pecan!</h1>");
 
 var dress = function dress() {
@@ -100,6 +102,12 @@ var Car = function () {
 var bmw = new Car();
 
 bmw.manufacturer('bmw');
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
