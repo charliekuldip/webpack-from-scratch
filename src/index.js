@@ -1,9 +1,14 @@
 require('./assets/stylesheets/styles.scss');
 
-document.write("<h1>hello BILLLY!<br>S.S.Seeee.S.D.S. Pecan!</h1>");
+var container = document.getElementById('container');
+var h1 = document.createElement('h1');
+var h2 = document.createElement('h1');
+h1.innerHTML = 'hello BILLLY!<br>S.S.Seeee.S.D.S. Pecan';
+container.append(h1);
 
+h2.innerHTML = 'MEMPHIS 3000';
 const dress = () => {
-    document.write("<h1>MEMPHIS 3000!</h1>");
+    container.append(h2);
 }
 
 dress();
@@ -11,7 +16,9 @@ dress();
 
 class Car {
     manufacturer(car) {
-        document.write(`I have a ${car}`);
+        let h3 = document.createElement('h3');
+        h3.innerHTML = `I have a ${car}`;
+        container.append(h3);
     }
 }
 

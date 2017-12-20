@@ -4,8 +4,23 @@ $text: rgb(240, 18, 190);
 $font: -apple-system, 'avenir next', avenir, roboto, noto, ubuntu, 'helvetica neue', helvetica, arial, sans-serif;
 $merriweather: "Merriweather", sans-serif;
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: $font;
     background-color: $bg;
     color: $text;
+    padding:0;
+    margin:0;
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
