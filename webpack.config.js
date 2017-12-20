@@ -13,16 +13,44 @@ let config = {
     module: {
         rules: [
             {
-                test: /\.js$/, // files ending with .js
+                test: /\.js$/,
                 exclude: /node_modules/, // exclude node_modules directory
                 loader: "babel-loader" // use this (babel-core) loader
             },
             {
-                test: /\.scss$/, // files ending with .scss
+                test: /\.scss$/,
                 use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({ // call our plugin with exract method
                     use: ['css-loader', 'sass-loader', 'postcss-loader'],
                     fallback: 'style-loader'
                 })) // end extract
+            },
+            {
+                test: /\.jsx$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: ['file-loader?context=src/assets/images/&name=images[path][name].[ext]', {
+                    loader: 'image-webpack-loader',
+                    query: {
+                        mozjpeg: {
+                            progressive: true,
+                        },
+                        gifsicle: {
+                            interlaced: false,
+                        },
+                        optipng: {
+                            optimizationLevel: 4,
+                        },
+                        pngquant: {
+                            quality: '75-90',
+                            speed: 3,
+                        }
+                    }
+                }],
+                exclude: /node_modules/,
+                include: __dirname
             }
         ] // end rules
     },
