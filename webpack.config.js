@@ -4,6 +4,9 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 
+
+const themeOptions = require('./theme.config.js');
+
 let config = {
     entry: './src/index.js',
     output: {
@@ -19,8 +22,17 @@ let config = {
             },
             {
                 test: /\.scss$/,
-                use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({ // call our plugin with exract method
-                    use: ['css-loader', 'sass-loader', 'postcss-loader'],
+                use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({ 
+                    use: [{
+                            loader: 'css-loader'
+                        }, {
+                            loader: 'sass-loader',
+                            options: {
+                                data: '@import "vars/_common.scss"; @import "vars/_'+themeOptions.name+'.scss";'
+                            }
+                        }, {
+                            loader: 'postcss-loader'
+                        }],
                     fallback: 'style-loader'
                 })) // end extract
             },
@@ -55,7 +67,8 @@ let config = {
         ] // end rules
     },
     plugins: [
-        new ExtractTextWebpackPlugin('styles.css') // call the Plugin contructor and name our css file
+        new ExtractTextWebpackPlugin('styles.css') // call the Plugin contructor and name our css file + theme name
+        // new ExtractTextWebpackPlugin(themeOptions.dir + '/' + themeOptions.name + '_styles.css')
     ],
     devServer: {
         contentBase: path.resolve(__dirname, './public'), // a dir or URL to serve HTML content

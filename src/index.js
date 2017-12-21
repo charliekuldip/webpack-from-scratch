@@ -1,10 +1,18 @@
+const themeOptions = require('../theme.config');
+
 require('./assets/stylesheets/styles.scss');
 
-var container = document.getElementById('container');
-var h1 = document.createElement('h1');
-var h2 = document.createElement('h1');
+var container = document.getElementById('container'),
+    title = document.createElement('h1'),
+    h1 = document.createElement('h1'),
+    h2 = document.createElement('h1');
+
 h1.innerHTML = 'hello BILLLY!<br>S.S.Seeee.S.D.S. Pecan';
-container.append(h1);
+title.innerHTML = themeOptions.name;
+title.id = 'title';
+title.className = 'title';
+
+container.append(title, h1);
 
 h2.innerHTML = 'MEMPHIS 3000';
 const dress = () => {
