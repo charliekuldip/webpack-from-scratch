@@ -4,12 +4,20 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 
+// CUR THEME
+let currentTheme = 'orange';
 
+// THEMES
+const allThemes = ['navyblue', 'orange', 'blue', 'yellow', 'purple', 'lavendar'];
+
+// SET THEME OPTIONS
 const themeOptions = require('./theme.config.js');
 
+// SCSS IMPORTS - USED FOR CUSTOM THEMES TO USE CORRESPONDING VARS
 const scssImports = [
     "@import 'vars/_common.scss';",
-    "@import 'vars/_"+themeOptions.name+".scss';"
+    // "@import 'vars/_"+themeOptions.name+".scss';"
+    "@import 'vars/_"+currentTheme+".scss';"
 ];
 
 let config = {
@@ -72,8 +80,8 @@ let config = {
         ] // end rules
     },
     plugins: [
-        new ExtractTextWebpackPlugin('styles.css') // call the Plugin contructor and name our css file + theme name
-        // new ExtractTextWebpackPlugin(themeOptions.dir + '/' + themeOptions.name + '_styles.css')
+        new ExtractTextWebpackPlugin('styles.css'),
+        new ExtractTextWebpackPlugin('css/' + currentTheme + '/_styles.css')
     ],
     devServer: {
         contentBase: path.resolve(__dirname, './public'), // a dir or URL to serve HTML content
