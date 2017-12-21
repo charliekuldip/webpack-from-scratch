@@ -1,4 +1,7 @@
 module.exports = {
-    name:'purple',
-    dir:'/themes'
+    name:'purple'
 }
+
+// module.exports = {
+//     name:'red'
+// }

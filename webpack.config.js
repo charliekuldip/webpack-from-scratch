@@ -33,7 +33,6 @@ let config = {
                         }, {
                             loader: 'sass-loader',
                             options: {
-                                // data: '@import "vars/_common.scss"; @import "vars/_'+themeOptions.name+'.scss";'
                                 data: scssImports.join(' ')
                             }
                         }, {

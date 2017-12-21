@@ -1,7 +1,7 @@
 /* VARS ARE IMPORTED */
-* {
-    box-sizing: border-box;
-}
+
+/* BASE STYLES */
+@import 'common/reset';
 
 body {
     font-family: $font;

@@ -1,7 +1,9 @@
 /* VARS ARE IMPORTED */
+/* BASE STYLES */
 * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
 
 body {
   font-family: -apple-system, "avenir next", avenir, roboto, noto, ubuntu, "helvetica neue", helvetica, arial, sans-serif;
@@ -29,4 +31,4 @@ body {
 
 .title {
   text-transform: uppercase;
-  font-size: 85px; }
+  font-size: 75px; }
