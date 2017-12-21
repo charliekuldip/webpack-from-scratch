@@ -7,6 +7,11 @@ const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 
 const themeOptions = require('./theme.config.js');
 
+const scssImports = [
+    "@import 'vars/_common.scss';",
+    "@import 'vars/_"+themeOptions.name+".scss';"
+];
+
 let config = {
     entry: './src/index.js',
     output: {
@@ -28,7 +33,8 @@ let config = {
                         }, {
                             loader: 'sass-loader',
                             options: {
-                                data: '@import "vars/_common.scss"; @import "vars/_'+themeOptions.name+'.scss";'
+                                // data: '@import "vars/_common.scss"; @import "vars/_'+themeOptions.name+'.scss";'
+                                data: scssImports.join(' ')
                             }
                         }, {
                             loader: 'postcss-loader'
