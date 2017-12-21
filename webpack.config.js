@@ -4,25 +4,15 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 
-// CUR THEME
-let currentTheme = 'orange';
-
-// THEMES
-const allThemes = ['navyblue', 'orange', 'blue', 'yellow', 'purple', 'lavendar'];
-
 // SET THEME OPTIONS
-// const themeOptions = require('./theme.config.js');
-
-// SCSS IMPORTS - USED FOR CUSTOM THEMES TO USE CORRESPONDING VARS
-// const scssImports = [
-//     "@import 'vars/_common.scss';",
-//     "@import 'vars/_"+currentTheme+".scss';"
-// ];
+const themeOptions = require('./theme.config.js');
 
 const wConfig = function(themes) {
     let configs = [];
 
     themes.forEach(function(currentTheme) {
+
+        // SCSS IMPORTS - USED FOR CUSTOM THEMES TO USE CORRESPONDING VARS
         let scssImports = [
             "@import 'vars/_common.scss';",
             "@import 'vars/_"+currentTheme+".scss';"
@@ -88,8 +78,10 @@ const wConfig = function(themes) {
                 ] // end rules
             },
             plugins: [
-                // new ExtractTextWebpackPlugin('styles.css'),
-                new ExtractTextWebpackPlugin('css/' + currentTheme + '/_styles.css')
+                new ExtractTextWebpackPlugin('css/' + currentTheme + '/_styles.css'),
+                new webpack.DefinePlugin({
+                    'CURRENT_THEME': JSON.stringify(currentTheme)
+                })
             ],
             devServer: {
                 contentBase: path.resolve(__dirname, './public'), // a dir or URL to serve HTML content
@@ -104,7 +96,7 @@ const wConfig = function(themes) {
     return configs;
 }
 
-module.exports = wConfig(allThemes);
+module.exports = wConfig(themeOptions.allThemes);
 
 if (process.env.NODE_ENV === 'production') {
     module.exports.plugins.push(

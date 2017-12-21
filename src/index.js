@@ -1,3 +1,5 @@
+// CURRENT_THEME - IS PASSED IN FROM DEFINE PLUGIN webpack.config.js
+
 const themeOptions = require('../theme.config');
 
 require('./assets/stylesheets/styles.scss');
@@ -8,7 +10,10 @@ var container = document.getElementById('container'),
     h2 = document.createElement('h1');
 
 h1.innerHTML = 'hello BILLLY!<br>S.S.Seeee.S.D.S. Pecan';
-title.innerHTML = themeOptions.name;
+
+console.log('CURRENT_THEME:', CURRENT_THEME);
+title.innerHTML = CURRENT_THEME;
+
 title.id = 'title';
 title.className = 'title';
 

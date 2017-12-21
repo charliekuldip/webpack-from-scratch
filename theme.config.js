@@ -2,6 +2,4 @@ module.exports = {
     name:'purple'
 }
 
-// module.exports = {
-//     name:'red'
-// }
+module.exports.allThemes = ['navyblue', 'orange', 'blue', 'yellow', 'purple', 'lavendar'];
