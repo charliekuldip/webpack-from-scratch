@@ -46,34 +46,6 @@ const wConfig = function(themes) {
                                 }],
                             fallback: 'style-loader'
                         })) // end extract
-                    },
-                    {
-                        test: /\.jsx$/,
-                        loader: 'babel-loader',
-                        exclude: /node_modules/
-                    },
-                    {
-                        test: /\.(jpe?g|png|gif|svg)$/i,
-                        loaders: ['file-loader?context=src/assets/images/&name=images[path][name].[ext]', {
-                            loader: 'image-webpack-loader',
-                            query: {
-                                mozjpeg: {
-                                    progressive: true,
-                                },
-                                gifsicle: {
-                                    interlaced: false,
-                                },
-                                optipng: {
-                                    optimizationLevel: 4,
-                                },
-                                pngquant: {
-                                    quality: '75-90',
-                                    speed: 3,
-                                }
-                            }
-                        }],
-                        exclude: /node_modules/,
-                        include: __dirname
                     }
                 ] // end rules
             },
@@ -91,16 +63,17 @@ const wConfig = function(themes) {
             },
             devtool: 'eval-source-map' // enable devtool for better debugging experience
         }
+
+        if (process.env.NODE_ENV === 'production') {
+            config.plugins.push(
+                new webpack.optimize.UglifyJsPlugin(), // call uglify js
+                new OptimizeCSSAssets() // optimize css
+            );
+        }
+
         configs.push(config);
     });
     return configs;
 }
 
 module.exports = wConfig(themeOptions.allThemes);
-
-if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins.push(
-        new webpack.optimize.UglifyJsPlugin(), // call uglify js
-        new OptimizeCSSAssets() // optimize css
-    );
-}
